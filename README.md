@@ -8,7 +8,8 @@ cp .env.template .env
 
 docker compose up -d && docker compose logs -f --tail=1000
 
-docker exec ${CONTAINER_ID or CONTAINER_NAME} cat /var/jenkins_home/secrets/initialAdminPassword
+docker exec -it -u root jenkins-jenkins-1 bash
+chown jenkins:jenkins /var/run/docker.sock && chown jenkins:jenkins /usr/bin/docker-compose
 ```
 
 ## References
